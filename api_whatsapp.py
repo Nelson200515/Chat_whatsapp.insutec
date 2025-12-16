@@ -6,7 +6,7 @@ async def whatsapp_webhook(request: Request):
     data = await request.json()
 
     try:
-        message_data = data["entry"][0]["changes"][0]["value"]["messages"][0"]
+        message_data = data["entry"][0]["changes"][0]["value"]["messages"][0]
         remetente = message_data["from"]
         mensagem = message_data["text"]["body"]
 
@@ -19,4 +19,5 @@ async def whatsapp_webhook(request: Request):
 
     except Exception as e:
         return {"error": str(e)}
+
 
