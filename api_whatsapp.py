@@ -1,6 +1,11 @@
 from fastapi import FastAPI, Request
 from agente.carregar_agente import carregar_agente
 
+app = FastAPI()
+
+# Carrega o agente apenas uma vez
+agent = carregar_agente()
+
 @app.post("/webhook")
 async def whatsapp_webhook(request: Request):
     data = await request.json()
